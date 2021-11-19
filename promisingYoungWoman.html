@@ -7,11 +7,40 @@
     <title>Список моих любимых фильмов</title>
     <link id="theme" rel="stylesheet" href="style2.css">
 </head>
+<script>
+    fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films/1236567', {
+    method: 'GET',
+    headers: {
+        'X-API-KEY': 'a4432d19-3639-4366-b26a-afe6ff1424eb',
+        'Content-Type': 'application/json',
+    },
+}).then(res => {
+        return res.json()
+    }).then(woman => {
+        const data = woman;
+        document.getElementById('title').textContent = data.nameOriginal;
+        for (i = 0; i < data.genres.length; i++) {
+            if (i > 0) {
+                document.getElementById('genres').textContent += ', ';
+            }
+            document.getElementById('genres').textContent += data.genres[i].genre;
+        };
+        for (i = 0; i < data.countries.length; i++) {
+            if (i > 0) {
+                document.getElementById('countries').textContent += ', ';
+            }
+            document.getElementById('countries').textContent += data.countries[i].country;
+        };
+        document.getElementById('description').textContent = data.description;
+        document.getElementById('rateRU').textContent = data.ratingKinopoisk;
+        document.getElementById('rate').textContent = data.ratingImdb;
+    });
+</script>
 <body>
     <div class="container">
         <div class="header">
             <div class="title-block">
-                <h1>Promising Young Woman (2020)</h1>
+                <h1 id="title"></h1>
             </div>
         </div>
         <div class="content-wrapper">
@@ -31,12 +60,12 @@
             </div>
             <div class="content">
                 <img src="./images/promisingYoungWoman.jpg" alt="картинка" width="500px" >
-                <p><i><strong>режиссер:</strong></i> Эмиральд Феннел</p>
-                <p><i><strong>жанры:</strong></i> триллер, драма, криминал</p>
-                <p><i><strong>страна:</strong></i> Великобритания, США</p>
-                <p><i><strong>описание:</strong></i> Когда-то Кассандра училась в университете и подавала большие надежды, но теперь живёт с родителями и работает в кофейне. Девушка скрывает от близких, что по вечерам посещает бары и другие увеселительные заведения, где, притворяясь сильно пьяной, ведёт охоту на падких до беззащитных женщин мужчин. Вымещая злость на противоположном поле, таким образом Кассандра мстит за события студенческих лет.</p>
-                <p><i><strong>оценка кинопоиска:</strong></i> 6.8</p>
-                <p><i><strong>оценка IMDb:</strong></i> 7.5</p>
+                <p><strong>режиссер:</strong><b> Эмиральд Феннел</b></p>
+                <p><strong>жанры:</strong> <b id="genres"></b></p>
+                <p><strong>страна:</strong> <b id="countries"></b></p>
+                <p><strong>описание:</strong> <b id="description"></b></p>
+                <p><strong>оценка кинопоиска:</strong><b id="rateRU"></b></p>
+                <p><strong>оценка IMDb:</strong><b id="rate"></b></p>
             </div>
         </div>
     </div>

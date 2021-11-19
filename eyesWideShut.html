@@ -7,11 +7,40 @@
     <title>Список моих любимых фильмов</title>
     <link id="theme" rel="stylesheet" href="style2.css">
 </head>
+<script>
+    fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films/3608', {
+    method: 'GET',
+    headers: {
+        'X-API-KEY': 'a4432d19-3639-4366-b26a-afe6ff1424eb',
+        'Content-Type': 'application/json',
+    },
+}).then(res => {
+        return res.json()
+    }).then(eyes => {
+        const data = eyes;
+        document.getElementById('title').textContent = data.nameOriginal;
+        for (i = 0; i < data.genres.length; i++) {
+            if (i > 0) {
+                document.getElementById('genres').textContent += ', ';
+            }
+            document.getElementById('genres').textContent += data.genres[i].genre;
+        };
+        for (i = 0; i < data.countries.length; i++) {
+            if (i > 0) {
+                document.getElementById('countries').textContent += ', ';
+            }
+            document.getElementById('countries').textContent += data.countries[i].country;
+        };
+        document.getElementById('description').textContent = data.description;
+        document.getElementById('rateRU').textContent = data.ratingKinopoisk;
+        document.getElementById('rate').textContent = data.ratingImdb;
+    });
+</script>
 <body>
     <div class="container">
         <div class="header">
             <div class="title-block">
-                <h1>Eyes wide shut (1999)</h1>
+                <h1 id="title"></h1>
             </div>
         </div>
         <div class="content-wrapper">
@@ -31,12 +60,12 @@
             </div>
             <div class="content">
                 <img src="./images/eyesWideShut.jpg" alt="картинка" width="500px" >
-                <p><i><strong>режиссер:</strong></i> Стэнли Кубрик</p>
-                <p><i><strong>жанры:</strong></i> триллер, драма, детектив</p>
-                <p><i><strong>страна:</strong></i> США, Великобритания</p>
-                <p><i><strong>описание:</strong></i> Билл и Элис Харфорд — супружеская пара, производящая впечатление счастливых людей, живущих своей размеренной жизнью в полном достатке. Но за фасадом идеальных отношений скрываются потоки ревности, неудовлетворенности, тайных желаний и жажды чего-то запредельного. Первый шаг делает Элис, рассказывая мужу о своих фантазиях. Терзаемый ревностью Билл идет дальше, выходя за рамки мыслей и слов. Он наяву отправляется в пьянящую сексуальную одиссею, ведомый соблазном и щекочущими нервы переживаниями. Если бы в начале пути он знал, что пределом его мечтаний станет возможность вернуться к своей привычной семейной жизни, он бы не поверил, ведь искушение вкусить запретный плод было слишком сильно…</p>
-                <p><i><strong>оценка кинопоиска:</strong></i> 7.5</p>
-                <p><i><strong>оценка IMDb:</strong></i> 7.4</p>
+                <p><strong>режиссер:</strong> <b>Стэнли Кубрик</b></p>
+                <p><strong>жанры:</strong> <b id="genres"></b></p>
+                <p><strong>страна:</strong> <b id="countries"></b></p>
+                <p><strong>описание:</strong> <b id="description"></b></p>
+                <p><strong>оценка кинопоиска:</strong><b id="rateRU"></b></p>
+                <p><strong>оценка IMDb:</strong><b id="rate"></b></p>
             </div>
         </div>
     </div>

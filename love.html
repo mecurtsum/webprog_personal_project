@@ -7,11 +7,40 @@
     <title>Список моих любимых фильмов</title>
     <link id="theme" rel="stylesheet" href="style2.css">
 </head>
+<script>
+    fetch('https://kinopoiskapiunofficial.tech/api/v2.2/films/842227', {
+    method: 'GET',
+    headers: {
+        'X-API-KEY': 'a4432d19-3639-4366-b26a-afe6ff1424eb',
+        'Content-Type': 'application/json',
+    },
+}).then(res => {
+        return res.json()
+    }).then(love => {
+        const data = love;
+        document.getElementById('title').textContent = data.nameOriginal;
+        for (i = 0; i < data.genres.length; i++) {
+            if (i > 0) {
+                document.getElementById('genres').textContent += ', ';
+            }
+            document.getElementById('genres').textContent += data.genres[i].genre;
+        };
+        for (i = 0; i < data.countries.length; i++) {
+            if (i > 0) {
+                document.getElementById('countries').textContent += ', ';
+            }
+            document.getElementById('countries').textContent += data.countries[i].country;
+        };
+        document.getElementById('description').textContent = data.description;
+        document.getElementById('rateRU').textContent = data.ratingKinopoisk;
+        document.getElementById('rate').textContent = data.ratingImdb;
+    });
+</script>
 <body>
     <div class="container">
         <div class="header">
             <div class="title-block">
-                <h1>Love (2015)</h1>
+                <h1 id="title"></h1>
             </div>
         </div>
         <div class="content-wrapper">
@@ -31,12 +60,12 @@
             </div>
             <div class="content">
                 <img src="./images/love.jpg" alt="картинка" width="500px" >
-                <p><i><strong>режиссер:</strong></i> Гаспар Ноэ</p>
-                <p><i><strong>жанры:</strong></i> драма, мелодрама</p>
-                <p><i><strong>страна:</strong></i> Франция, Бельгия</p>
-                <p><i><strong>описание:</strong></i> Любовь вне добра и зла. Любовь - это генетическая потребность. Это дар и проклятие. Любовь - это болезнь, наркотик. Это потеря и обретение себя. Любовь - это самое прекрасное и самое ужасное в нашей жизни. Любовь - это переплетение душ и соединение тел. «Любовь» - это возбуждающая сексуальная мелодрама о парне, девушке и еще одной девушке.</p>
-                <p><i><strong>оценка кинопоиска:</strong></i> 6.4</p>
-                <p><i><strong>оценка IMDb:</strong></i> 6.1</p>
+                <p><strong>режиссер:</strong><b> Гаспар Ноэ</b></p>
+                <p><strong>жанры:</strong> <b id="genres"></b></p>
+                <p><strong>страна:</strong> <b id="countries"></b></p>
+                <p><strong>описание:</strong> <b id="description"></b></p>
+                <p><strong>оценка кинопоиска:</strong><b id="rateRU"></b></p>
+                <p><strong>оценка IMDb:</strong><b id="rate"></b></p>
             </div>
         </div>
     </div>
