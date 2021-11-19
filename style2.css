@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+
+body {
+    background-image: url(./images/background.jpg);
+    font-family: 'Noto Serif', serif;
+    padding: 80px;
+}
+
+.container {
+    width: 800px;
+    min-height: 800px;
+    border: 10px solid maroon;
+    margin: 0 auto;
+    background-color: aliceblue;
+}
+
+.header {
+    display: flex;
+    height: 80px;
+    margin: 0 auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-bottom: 40px;
+}
+
+.title-block {
+    display: flex;
+    font-size: large;
+    width: 80%;
+    height: 100%;
+    padding-top: 40px;
+}
+
+.avatar {
+    display: flex;
+    padding: 30px;
+    width: 20%;
+}
+
+.content-wrapper {
+    display: flex;
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.content {
+    display: block;
+    width: 70%;
+}
+
+.sidebar {
+    display: flex;
+    width: 25%;
+    padding-right: 50px;
+}
