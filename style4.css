@@ -30,13 +30,7 @@ body {
     padding-top: 40px;
 }
 
-.avatar {
-    display: flex;
-    padding: 30px;
-    width: 20%;
-}
-
-.btn1 {
+.btn2 {
     color: white;
     display: block;
     border: 1px;
@@ -48,9 +42,15 @@ body {
     font-size: large;
   }
 
-.btn1:hover {
+.btn2:hover {
     background-color: white;
     color: rgb(230, 59, 88);
+}
+
+.avatar {
+    display: flex;
+    padding: 30px;
+    width: 20%;
 }
 
 .content-wrapper {
@@ -61,12 +61,12 @@ body {
 }
 
 .content {
-    display: flex;
+    display: block;
     width: 70%;
 }
 
 .sidebar {
     display: block;
     width: 25%;
-    padding-right: 20px;
+    padding-right: 50px;
 }
