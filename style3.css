@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
 body {
-    background-image: url(./images/background.jpg);
+    background-image: url(./images/background2.jpg);
     font-family: 'Noto Serif', serif;
     padding: 80px;
 }
@@ -9,9 +9,9 @@ body {
 .container {
     width: 800px;
     min-height: 800px;
-    border: 10px solid maroon;
+    border: 10px solid rgb(236, 91, 171);
     margin: 0 auto;
-    background-color: aliceblue;
+    background-color: white;
 }
 
 .header {
